@@ -40,42 +40,42 @@ export default function Spin() {
     // localStorage.setItem('spin', 'true')
     // router.push('/complete')
 
-    try {
-      const baseUrl = 'https://automation-mathflat.vercel.app/api/slack'
-      const base = axios.create({
-        baseURL: baseUrl,
-        headers: {
-          'Content-Type': 'application/text',
-          Authorization: `Bearer ${TOKEN}`,
-        },
-      })
-
-      const result = await base.post('/postDm', {
-        channel: 'DM948GFS4',
-        message: 'hello world',
-      })
-      console.log('result', result)
-    } catch (error) {
-      console.log('error', error)
-    }
-
-    // const baseUrl = 'https://slack.com/api'
-    // const base = axios.create({
-    //   baseURL: baseUrl,
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     Authorization: `Bearer ${process.env.SLACK_DM_BOT_TOKEN || TOKEN}`,
-    //   },
-    // })
-
     // try {
-    //   await base.post('/chat.postMessage', {
-    //     channel: 'DM948GFS4',
-    //     text: 'hello world',
+    //   const baseUrl = 'https://automation-mathflat.vercel.app/api/slack'
+    //   const base = axios.create({
+    //     baseURL: baseUrl,
+    //     headers: {
+    //       'Content-Type': 'application/text',
+    //       Authorization: `Bearer ${TOKEN}`,
+    //     },
     //   })
+
+    //   const result = await base.post('/postDm', {
+    //     channel: 'DM948GFS4',
+    //     message: 'hello world',
+    //   })
+    //   console.log('result', result)
     // } catch (error) {
     //   console.log('error', error)
     // }
+
+    const baseUrl = 'https://slack.com/api'
+    const base = axios.create({
+      baseURL: baseUrl,
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${TOKEN}`,
+      },
+    })
+
+    try {
+      await base.post('/chat.postMessage', {
+        channel: 'DM948GFS4',
+        text: 'hello world',
+      })
+    } catch (error) {
+      console.log('error', error)
+    }
 
     // const Axios = axios.create({
     //   baseURL: 'https://slack.com/api',

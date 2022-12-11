@@ -69,7 +69,6 @@ export default function Spin() {
     const base = axios.create({
       baseURL: baseUrl,
       headers: {
-        'Access-Control-Allow-Headers': '*',
         'Content-Type': 'application/json',
         Authorization: `Bearer ${process.env.SLACK_DM_BOT_TOKEN || TOKEN}`,
       },

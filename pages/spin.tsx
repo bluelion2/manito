@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { useEffect } from 'react'
 
-const TOKEN = 'xoxp-366190432502-725008683671-4120118477653-0c865ae5d62c6b1a85e26829770c0d29'
+const TOKEN = 'xoxp-366190432502-725008683671-4484855641991-1296cb880d9df4cd6ed5883c04d0ae95'
 
 export default function Spin() {
   const [click, setClick] = useState(false)
@@ -70,6 +70,7 @@ export default function Spin() {
       baseURL: baseUrl,
       headers: {
         'Access-Control-Allow-Headers': '*',
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${process.env.SLACK_DM_BOT_TOKEN || TOKEN}`,
       },
     })

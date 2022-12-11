@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { useEffect } from 'react'
 
-const TOKEN = 'xoxp-366190432502-725008683671-4484855641991-1296cb880d9df4cd6ed5883c04d0ae95'
+const TOKEN = 'xoxb-366190432502-3544636566640-DRtRs1KacW5frmU68iT9GH5P'
 
 export default function Spin() {
   const [click, setClick] = useState(false)

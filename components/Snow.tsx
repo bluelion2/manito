@@ -1,7 +1,7 @@
 export default function Snow({ ...props }) {
   return (
     <>
-      <div className="snow-wrap" {...props}>
+      <div className="snow-wrap background-container" {...props}>
         <div className="snow"></div>
       </div>
       {/* https://codepen.io/keithclark/pen/DjXzBw */}
@@ -9,9 +9,6 @@ export default function Snow({ ...props }) {
         {`
           .snow-wrap {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(#123 30%, #667);
             overflow: hidden;
           }
 

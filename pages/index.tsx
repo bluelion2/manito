@@ -15,6 +15,7 @@ export default function Home() {
           <br />
           <p className="font-bold">안녕하세요 세현님!</p>
           <p>Merry Christmas!</p>
+          <p>당신의 마니또 입니다.</p>
           <br />
           <br />
           <p>즐거운 크리스마스와</p>
@@ -22,7 +23,7 @@ export default function Home() {
           <br />
           <br />
           <Link
-            href="/intro"
+            href="/spin"
             className="flex justify-center items-center w-full h-12 text-white bg-blues-300 rounded-md"
           >
             선물 받기

@@ -1,19 +1,13 @@
 import Card from '@components/Card'
-import axios from 'axios'
-import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { useEffect } from 'react'
 
-const TOKEN = 'xoxp-366190432502-725008683671-4501873304820-500be95b01cf97b780bf7fb72d363dbb'
-
+const imgURL =
+  'https://user-images.githubusercontent.com/34129711/206900868-81c1ab49-5261-40c8-8441-18b53294331f.jpg'
 export default function Spin() {
   const [click, setClick] = useState(false)
-  const router = useRouter()
 
   useEffect(() => {
-    const form1 = window?.localStorage.getItem('form1') || '1'
-    const form2 = window?.localStorage.getItem('form1') || '2'
-    const form3 = window?.localStorage.getItem('form1') || '4'
     const spin =
       window?.localStorage.getItem('spin') && window?.localStorage.getItem('spin') === 'true'
         ? true
@@ -23,86 +17,28 @@ export default function Spin() {
   }, [])
 
   const handleClick = async () => {
-    // if (click) {
-    //   alert('이미 선택되었습니다.')
-    //   return
-    // }
-    // const target = document.getElementsByClassName('wheel')[0]
-    // target.classList.add('clicked')
-    // setClick(true)
-    // alert('돌아갑니다~ ')
-    // setTimeout(() => {
-    //   alert(`
-    //     축하합니다.
-    //     스타벅스 기프트콘에 당첨되셨군요!
-    // `)
-    // }, 3000)
-    // localStorage.setItem('spin', 'true')
-    // router.push('/complete')
-
-    // try {
-    //   const baseUrl = 'https://automation-mathflat.vercel.app/api/slack'
-    //   const base = axios.create({
-    //     baseURL: baseUrl,
-    //     headers: {
-    //       'Content-Type': 'application/text',
-    //       Authorization: `Bearer ${TOKEN}`,
-    //     },
-    //   })
-
-    //   const result = await base.post('/postDm', {
-    //     channel: 'DM948GFS4',
-    //     message: 'hello world',
-    //   })
-    //   console.log('result', result)
-    // } catch (error) {
-    //   console.log('error', error)
-    // }
-
-    const baseUrl = 'https://slack.com/api'
-    const base = axios.create({
-      baseURL: baseUrl,
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${TOKEN}`,
-      },
-    })
-
-    try {
-      await base.post('/chat.postMessage', {
-        channel: 'DM948GFS4',
-        text: 'hello world',
-      })
-    } catch (error) {
-      console.log('error', error)
+    localStorage.clear()
+    if (click) {
+      alert('이미 선택되었습니다.')
+      return
     }
+    const target = document.getElementsByClassName('wheel')[0]
+    target.classList.add('clicked')
 
-    // const Axios = axios.create({
-    //   baseURL: 'https://slack.com/api',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'Access-Control-Allow-Origin': '*',
-    //     Authorization: `Bearer xoxp-366190432502-725008683671-4120118477653-0c865ae5d62c6b1a85e26829770c0d29`,
-    //   },
-    // })
-    // Axios.post('/chat.message', {
-    //   channel: '/TAS5LCQES/DM948GFS4',
-    //   text: 'hello world',
-    // })
-  }
+    alert('돌아갑니다~ ')
+    setTimeout(() => {
+      alert('축하합니다. 스타벅스 기프트콘에 당첨되셨군요!')
 
-  const download = () => {
-    const target = document.createElement('a')
-    target.setAttribute('download', '/giftcon.jpg')
-    target.click()
+      setClick(true)
+      window.location.href = imgURL
+    }, 3000)
   }
 
   return (
     <>
       <div className="relative overflow-auto w-full flex justify-center text-white flex-col items-center flex-wrap h-full text-base">
         <Card>
-          <p>감사합니다!</p>
-          <p>그러면 룰렛을 돌려주세요!</p>
+          <p>룰렛을 돌려주세요!</p>
           <p>룰렛에 나온 상품을 드리겠습니다.</p>
         </Card>
 

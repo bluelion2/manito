@@ -6,15 +6,9 @@ export default function Complete() {
   const router = useRouter()
 
   useEffect(() => {
-    const complete = window?.localStorage.getItem('complete')
-
-    if (complete) {
-      alert('이미 받았습니다.')
-      router.push('/')
-    }
-    return () => {
-      window.localStorage.setItem('complete', 'complete')
-    }
+    setTimeout(() => {
+      alert('화면을 캡쳐해서 잘 쓰세요!')
+    }, 1000)
   }, [])
 
   return (

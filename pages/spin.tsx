@@ -39,49 +39,43 @@ export default function Spin() {
     // }, 3000)
     // localStorage.setItem('spin', 'true')
     // router.push('/complete')
-    // https://hooks.slack.com/services/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
-    // fetch('https://hooks.slack.com/services/TAS5LCQES/DM948GFS4', {
-    //   method: 'POST',
-    //   mode: 'cors',
+
+    try {
+      const baseUrl = 'https://automation-mathflat.vercel.app/api/slack'
+      const base = axios.create({
+        baseURL: baseUrl,
+        headers: {
+          'Content-Type': 'application/text',
+          Authorization: `Bearer ${TOKEN}`,
+        },
+      })
+
+      const result = await base.post('/postDm', {
+        channel: 'DM948GFS4',
+        message: 'hello world',
+      })
+      console.log('result', result)
+    } catch (error) {
+      console.log('error', error)
+    }
+
+    // const baseUrl = 'https://slack.com/api'
+    // const base = axios.create({
+    //   baseURL: baseUrl,
     //   headers: {
     //     'Content-Type': 'application/json',
     //     Authorization: `Bearer ${process.env.SLACK_DM_BOT_TOKEN || TOKEN}`,
     //   },
-    //   redirect: 'follow',
-    //   body: 'hello world',
     // })
-    // const baseUrl = 'https://automation-mathflat.vercel.app/api/slack/postDm'
-    // axios.post(
-    //   baseUrl,
-    //   {
-    //     channel: '/TAS5LCQES/DM948GFS4',
-    //     body: 'hellow world',
-    //   },
-    //   {
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       'Access-Control-Allow-Origin': '*',
-    //       Authorization: `Bearer ${process.env.SLACK_DM_BOT_TOKEN || TOKEN}`,
-    //     },
-    //   }
-    // )
-    const baseUrl = 'https://slack.com/api'
-    const base = axios.create({
-      baseURL: baseUrl,
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.SLACK_DM_BOT_TOKEN || TOKEN}`,
-      },
-    })
 
-    try {
-      await base.post('/chat.postMessage', {
-        channel: 'DM948GFS4',
-        text: 'hello world',
-      })
-    } catch (error) {
-      console.log('error', error)
-    }
+    // try {
+    //   await base.post('/chat.postMessage', {
+    //     channel: 'DM948GFS4',
+    //     text: 'hello world',
+    //   })
+    // } catch (error) {
+    //   console.log('error', error)
+    // }
 
     // const Axios = axios.create({
     //   baseURL: 'https://slack.com/api',

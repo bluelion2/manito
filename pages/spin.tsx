@@ -69,17 +69,19 @@ export default function Spin() {
     const base = axios.create({
       baseURL: baseUrl,
       headers: {
-        'content-Type': 'application/json',
+        'Access-Control-Allow-Headers': '*',
         Authorization: `Bearer ${process.env.SLACK_DM_BOT_TOKEN || TOKEN}`,
       },
     })
 
-    base.defaults.headers
-
-    base.post('/chat.postMessage', {
-      channel: 'DM948GFS4',
-      text: 'hello world',
-    })
+    try {
+      await base.post('/chat.postMessage', {
+        channel: 'DM948GFS4',
+        text: 'hello world',
+      })
+    } catch (error) {
+      console.log('error', error)
+    }
 
     // const Axios = axios.create({
     //   baseURL: 'https://slack.com/api',

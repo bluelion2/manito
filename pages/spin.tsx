@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { useEffect } from 'react'
 
-const TOKEN = 'xoxb-366190432502-3544636566640-s3x2sTxUKCCwNQMvQxzMXUem'
+const TOKEN = 'xoxp-366190432502-725008683671-4120118477653-0c865ae5d62c6b1a85e26829770c0d29'
 
 export default function Spin() {
   const [click, setClick] = useState(false)
@@ -22,12 +22,11 @@ export default function Spin() {
     setClick(spin)
   }, [])
 
-  const handleClick = () => {
+  const handleClick = async () => {
     // if (click) {
     //   alert('이미 선택되었습니다.')
     //   return
     // }
-
     // const target = document.getElementsByClassName('wheel')[0]
     // target.classList.add('clicked')
     // setClick(true)
@@ -38,10 +37,8 @@ export default function Spin() {
     //     스타벅스 기프트콘에 당첨되셨군요!
     // `)
     // }, 3000)
-
     // localStorage.setItem('spin', 'true')
     // router.push('/complete')
-
     // https://hooks.slack.com/services/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
     // fetch('https://hooks.slack.com/services/TAS5LCQES/DM948GFS4', {
     //   method: 'POST',
@@ -53,19 +50,49 @@ export default function Spin() {
     //   redirect: 'follow',
     //   body: 'hello world',
     // })
-    const baseUrl = 'https://automation-mathflat.vercel.app/api/slack/postDm'
-    axios.post(baseUrl, {
-      channel: '/TAS5LCQES/DM948GFS4',
-      body: 'hellow world',
+    // const baseUrl = 'https://automation-mathflat.vercel.app/api/slack/postDm'
+    // axios.post(
+    //   baseUrl,
+    //   {
+    //     channel: '/TAS5LCQES/DM948GFS4',
+    //     body: 'hellow world',
+    //   },
+    //   {
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //       'Access-Control-Allow-Origin': '*',
+    //       Authorization: `Bearer ${process.env.SLACK_DM_BOT_TOKEN || TOKEN}`,
+    //     },
+    //   }
+    // )
+    const baseUrl = 'https://slack.com/api'
+    const base = axios.create({
+      baseURL: baseUrl,
+      headers: {
+        'content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.SLACK_DM_BOT_TOKEN || TOKEN}`,
+      },
     })
+
+    base.defaults.headers
+
+    base.post('/chat.postMessage', {
+      channel: 'DM948GFS4',
+      text: 'hello world',
+    })
+
     // const Axios = axios.create({
     //   baseURL: 'https://slack.com/api',
     //   headers: {
     //     'Content-Type': 'application/json',
-    //     Authorization: `Bearer ${process.env.SLACK_DM_BOT_TOKEN || TOKEN}`,
+    //     'Access-Control-Allow-Origin': '*',
+    //     Authorization: `Bearer xoxp-366190432502-725008683671-4120118477653-0c865ae5d62c6b1a85e26829770c0d29`,
     //   },
     // })
-    // Axios.post('/TAS5LCQES/DM948GFS4', 'hello world')
+    // Axios.post('/chat.message', {
+    //   channel: '/TAS5LCQES/DM948GFS4',
+    //   text: 'hello world',
+    // })
   }
 
   const download = () => {

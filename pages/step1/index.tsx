@@ -8,7 +8,7 @@ export default function Step1() {
     <>
       <Snow />
       <div className="relative overflow-auto w-full flex justify-center text-white flex-col items-center flex-wrap h-full text-base">
-        <Card>
+        <Card className="max-w-lg">
           <br />
           <p className="font-bold">안녕하세요 세현님!</p>
           <p>당신의 마니또 입니다.</p>

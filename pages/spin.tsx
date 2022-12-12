@@ -26,12 +26,12 @@ export default function Spin() {
     target.classList.add('clicked')
 
     alert('돌아갑니다~ ')
-    setTimeout(() => {
-      alert('축하합니다. 스타벅스 기프트콘에 당첨되셨군요!')
+    // setTimeout(() => {
+    //   alert('축하합니다. 스타벅스 기프트콘에 당첨되셨군요!')
 
-      setClick(true)
-      window.location.href = imgURL
-    }, 3000)
+    //   setClick(true)
+    //   window.location.href = imgURL
+    // }, 7300)
   }
 
   return (
@@ -95,8 +95,8 @@ export default function Spin() {
 
         .wheel.clicked {
           animation-name: spin;
-          animation-duration: 3s;
-          animation-timing-function: ease-out;
+          animation-duration: 7s;
+          animation-timing-function: ease-in-out;
           animation-fill-mode: both;
         }
 
@@ -132,8 +132,12 @@ export default function Spin() {
           0% {
             transform: rotate(45deg);
           }
+          80% {
+            transform: rotate(1815deg);
+          }
+
           100% {
-            transform: rotate(1755deg);
+            transform: rotate(1795deg);
           }
         }
       `}</style>

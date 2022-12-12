@@ -4,11 +4,10 @@ import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 
 export default function Step1() {
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit } = useForm<{ form1: string }>()
   const router = useRouter()
 
-  const onSubmit = (data: any) => {
-    console.log('data', data)
+  const onSubmit = (data: { form1: string }) => {
     window.localStorage.setItem('form1', data.form1)
     router.push('/step2')
   }

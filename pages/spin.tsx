@@ -1,37 +1,53 @@
 import Card from '@components/Card'
+import axios from 'axios'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { useEffect } from 'react'
 
-const imgURL =
-  'https://user-images.githubusercontent.com/34129711/206900868-81c1ab49-5261-40c8-8441-18b53294331f.jpg'
 export default function Spin() {
   const [click, setClick] = useState(false)
 
-  useEffect(() => {
-    const spin =
-      window?.localStorage.getItem('spin') && window?.localStorage.getItem('spin') === 'true'
-        ? true
-        : false
+  const router = useRouter()
 
-    setClick(spin)
+  useEffect(() => {
+    fetchUserInfo()
   }, [])
+
+  const fetchUserInfo = async () => {
+    const { data } = await axios.get('http://52.79.120.214/users')
+    setClick(data.isDownloaded)
+  }
+
+  const patchFormData = async () => {
+    const form1 = localStorage.getItem('form1') || '1'
+    const form2 = localStorage.getItem('form2') || '2'
+    const form3 = localStorage.getItem('form3') || '3'
+    const data = {
+      form1,
+      form2,
+      form3,
+    }
+    await axios.patch('http://52.79.120.214/users', data)
+  }
 
   const handleClick = async () => {
     localStorage.clear()
     if (click) {
-      alert('이미 선택되었습니다.')
+      alert('이미 룰렛을 돌리셨어요.')
       return
     }
     const target = document.getElementsByClassName('wheel')[0]
     target.classList.add('clicked')
 
     alert('돌아갑니다~ ')
-    // setTimeout(() => {
-    //   alert('축하합니다. 스타벅스 기프트콘에 당첨되셨군요!')
+    setTimeout(() => {
+      alert('축하합니다. 스타벅스 기프트콘에 당첨되셨군요!')
 
-    //   setClick(true)
-    //   window.location.href = imgURL
-    // }, 7300)
+      setClick(true)
+      patchFormData().then(() => {
+        router.push('/complete')
+      })
+    }, 7300)
   }
 
   return (

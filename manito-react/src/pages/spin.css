@@ -1,0 +1,62 @@
+.wheel {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  text-align: center;
+  width: 260px;
+  height: 260px;
+  margin-top: 10px;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-color: white;
+  overflow: hidden;
+  transform: rotate(45deg);
+}
+
+.wheel.clicked {
+  animation-name: spin;
+  animation-duration: 7s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 129px;
+  height: 129px;
+}
+
+.option > span {
+  transform: rotate(315deg);
+}
+
+.o1 {
+  background-color: red;
+}
+
+.o2 {
+  background-color: #00abff;
+}
+
+.o3 {
+  background-color: #959595;
+}
+
+.o4 {
+  background-color: green;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(45deg);
+  }
+  80% {
+    transform: rotate(1815deg);
+  }
+
+  100% {
+    transform: rotate(1795deg);
+  }
+}

@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+  Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+height: 100%;
+width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+html,
+body,
+#root,
+p,
+div,
+a,
+section,
+footer,
+header,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+}
+
+.background-container {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#123 30%, #667);
+}

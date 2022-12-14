@@ -1,6 +1,6 @@
 import Card from '@components/Card'
 
-export default function Spin() {
+export default function Spiner() {
   const handleClick = async () => {
     const target = document.getElementsByClassName('wheel')[0]
     target.classList.add('clicked')
